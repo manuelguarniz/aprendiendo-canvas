@@ -6,17 +6,26 @@
   <title>Document</title>
 
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
     canvas {
-      width: 400px;
-      height: 200px;
-      border: 1px solid #000;
+      /* width: 400px;
+      height: 200px; */
+      /* border: 1px solid #000; */
+      display: block;
     }
   </style>
 </head>
 <body>
-  <button id="increment">+</button>
-  <button id="decrement">-</button>
   <canvas id="canvas"></canvas>
+  <!-- <button id="increment">+</button>
+  <button id="decrement">-</button> -->
   <script src="./app.js"></script>
 </body>
 </html>
