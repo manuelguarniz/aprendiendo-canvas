@@ -4,33 +4,28 @@ let Canvas = {
   _canvas: null,
   _with: window.innerWidth,
   _height: window.innerHeight,
-  _x: 200,
-  _v: 5,
-  _context: null,
-  init() {
+  render() {
 
-    this._context = this._canvas.getContext('2d');
+    let context = this._canvas.getContext('2d');
 
     this._canvas.width = this._with;
     this._canvas.height = this._height;
+    
+    context.fillRect(0, 0, 150, 150);
+    
+    context.save();
 
-    this.render();
-  },
-  render() {
+    context.fillStyle = 'red';
+    context.fillRect(15, 15, 120, 120);
+    
+    context.save();
+    
+    context.fillStyle = 'blue';
+    context.fillRect(30, 30, 90, 90);
+    
+    context.restore();
 
-    window.requestAnimationFrame(() => this.render());
-    this._context.clearRect(0, 0, this._with, this._height)
-    console.log('re-render');
-
-    this._context.beginPath();
-    this._context.arc(this._x, 200, 60, 0, 2 * Math.PI);
-    this._context.strokeStyle = 'crimson';
-    this._context.stroke();
-
-    if (this._x > this._with || this._x < 0)
-      this._v = -this._v;
-
-    this._x+=this._v;
+    context.fillRect(45, 45, 60,60);
   }
 }
 
@@ -58,7 +53,7 @@ window.addEventListener('DOMContentLoaded', () => {
   canvasGraf._canvas = canvas;
   // canvasGraf._with = mod;
   // canvasGraf._height = 10;
-  canvasGraf.init();
+  canvasGraf.render();
   
 })
 window.addEventListener('resize', () => {

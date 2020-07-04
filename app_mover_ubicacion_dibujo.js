@@ -4,33 +4,19 @@ let Canvas = {
   _canvas: null,
   _with: window.innerWidth,
   _height: window.innerHeight,
-  _x: 200,
-  _v: 5,
-  _context: null,
-  init() {
+  render() {
 
-    this._context = this._canvas.getContext('2d');
+    let context = this._canvas.getContext('2d');
 
     this._canvas.width = this._with;
     this._canvas.height = this._height;
+    
+    context.translate(50, 50);
+    context.fillRect(0, 0, 100, 150);
+    context.fillRect(100, 100, 100, 150)
 
-    this.render();
-  },
-  render() {
-
-    window.requestAnimationFrame(() => this.render());
-    this._context.clearRect(0, 0, this._with, this._height)
-    console.log('re-render');
-
-    this._context.beginPath();
-    this._context.arc(this._x, 200, 60, 0, 2 * Math.PI);
-    this._context.strokeStyle = 'crimson';
-    this._context.stroke();
-
-    if (this._x > this._with || this._x < 0)
-      this._v = -this._v;
-
-    this._x+=this._v;
+    context.setTransform(1, 0, 10, 1, 0, 0);
+    context.fillRect(0, 0, 100, 150);
   }
 }
 
@@ -58,7 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
   canvasGraf._canvas = canvas;
   // canvasGraf._with = mod;
   // canvasGraf._height = 10;
-  canvasGraf.init();
+  canvasGraf.render();
   
 })
 window.addEventListener('resize', () => {
